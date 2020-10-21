@@ -1,0 +1,12 @@
+- hosts: all
+  become: yes
+  tasks:
+  - name: install vsftpd on emazon_ec2
+    yum: name=vsftpd state=latest
+    ignore_errors: yes
+    notify: start vsftpd
+
+
+  handlers:
+  - name: start vsftpd
+    service: name=vsftpd enabled=yes state=started

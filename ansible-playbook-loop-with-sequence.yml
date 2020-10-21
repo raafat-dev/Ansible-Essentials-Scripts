@@ -1,0 +1,7 @@
+- hosts: all
+  become: yes
+  tasks:
+  - name: show file content
+    debug: msg="this is loop {{item}}"
+    when: ansible_os_family == 'RedHat'
+    with_sequence: start=1 end=10

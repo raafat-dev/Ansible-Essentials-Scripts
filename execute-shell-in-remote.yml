@@ -1,0 +1,7 @@
+- hosts: all
+  tasks:
+  - name: copy shell to remote
+    copy: src=/home/mohamed/test dest=/home/raafat
+
+  - name: execute shell to remote host
+    shell: sh /home/raafat/test

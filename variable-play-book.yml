@@ -1,0 +1,39 @@
+- hosts: all
+  vars:
+   var1: nano
+   var2: apache2
+   var3: curl
+   var4: python
+   var5: httpd
+   var6: /home/mohamed/test
+   var7: /home/raafat
+  tasks:
+  - name: install nano in ubuntu
+    apt: name={{var1}} state=present
+    ignore_errors: yes
+
+  - name: install nano in amazon-ec2
+    yum: name={{var1}} state=present
+    ignore_errors: yes
+
+  - name: install apache in ubuntu
+    apt: name={{var2}} state=present
+    ignore_errors: yes
+    notify: start apache service in ubuntuservers
+
+  - name: install apache in amazon-ec2
+    yum: name={{var5}} state=present
+    ignore_errors: yes
+    notify: start apache service in amazonec2
+
+  - name: copy shell to remote
+    copy: src={{var6}} dest={{var7}}
+
+
+
+  handlers:
+  - name: start apache service in amazonec2
+    service: name={{var5}} enabled=yes state=started
+
+  - name: start apache service in ubuntuservers
+    service: name=apache2 enabled=yes state=started

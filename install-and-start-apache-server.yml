@@ -1,0 +1,11 @@
+- hosts: all
+  become: yes
+  tasks:
+  - name: install apache in amazon-ec2
+    yum: name=httpd state=present
+
+  - name: install nano in amazon-ec2
+    yum: name=nano state=present
+
+  - name: install python in amazon-ec2
+    yum: name=python state=present

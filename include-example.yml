@@ -1,0 +1,4 @@
+- include: ansible-playbook-loop-with-sequence.yml
+- hosts: all
+  tasks:
+  - include: include-play-to-install-vim.yml

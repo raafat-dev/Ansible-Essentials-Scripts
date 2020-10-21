@@ -1,0 +1,52 @@
+hello
+
+PLAY [all] *****************************************************************************************
+
+TASK [Gathering Facts] *****************************************************************************
+ok: [ubuntu-client-3]
+ok: [amazonEC2-centos-1]
+ok: [amazonEC2-centos-2]
+
+TASK [do a uname] **********************************************************************************
+changed: [amazonEC2-centos-1]
+changed: [amazonEC2-centos-2]
+changed: [ubuntu-client-3]
+
+TASK [whoami] **************************************************************************************
+changed: [ubuntu-client-3]
+changed: [amazonEC2-centos-1]
+changed: [amazonEC2-centos-2]
+
+PLAY RECAP *****************************************************************************************
+amazonEC2-centos-1         : ok=3    changed=2    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
+amazonEC2-centos-2         : ok=3    changed=2    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
+ubuntu-client-3            : ok=3    changed=2    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
+
+
+-a "filter=*family*"
+
+____________________________________________
+[web_servers]
+webserver_1
+webserver_2
+[web_servers:vars]
+ansible_user=root
+ansible_port=22
+_____________________________________________________
+
+[web_servers]
+webserver_1
+webserver_2
+
+[web_servers:vars]
+http_port=443
+ntp_server=us.pool.ntp.org
+
+__________________________________________________________
+
+[web_servers]
+webserver_1  ntp_server=uk.pool.ntp.org
+webserver_2  ntp_server=de.pool.ntp.org
+______________________________-______________________________
+
+debug: msg={{output.stdout_line}}

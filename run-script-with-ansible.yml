@@ -1,0 +1,4 @@
+- hosts: all
+  tasks:
+  - name: execute install script
+    script: script-to-list-of-users-logged-by-day

@@ -1,0 +1,9 @@
+
+- hosts: all
+  become: yes
+  tasks:
+  - name: do a uname
+    shell: uname -a >> /home/raafat/results.txt
+
+  - name: whoami
+    shell: whoami >> /home/raafat/results.txt

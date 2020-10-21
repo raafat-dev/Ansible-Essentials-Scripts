@@ -1,0 +1,2 @@
+- name: start vsftpd
+  service: name=vsftpd enabled=yes state=started

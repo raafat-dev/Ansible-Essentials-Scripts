@@ -1,0 +1,8 @@
+
+ansible-vault create vault-test.yml
+
+ansible-vault edit vault-test.yml
+
+ansible-playbook vault-test.yaml
+
+ansible-playbook vault-test.yml --vault-password-file password.txt

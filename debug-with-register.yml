@@ -1,0 +1,12 @@
+- hosts: all
+  vars:
+   students:
+    - mohamed
+    - raafat
+  tasks:
+  - name: echo task
+    command: echo "my first name {{students[0]}} and last name is {{students[1]}}"
+    register: output
+
+  - name: show results
+    debug: msg={{output}}

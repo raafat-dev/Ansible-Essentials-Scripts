@@ -1,0 +1,10 @@
+- hosts: all
+  vars:
+   var1: welcome to you in ansible cours
+   var2: this is session 2
+  tasks:
+  - name: echo statement and save it in text file
+    shell: echo  "{{var1}} with cloud wolves , {{var2}}"
+
+  - name: echo statement with fact file
+    shell: echo  "{{var1}} with cloud wolves , {{var2}}" 

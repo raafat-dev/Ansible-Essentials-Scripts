@@ -1,0 +1,24 @@
+- hosts: all
+  become: yes
+  tasks:
+  - name: install packages on emazon_ec2-serers
+    yum: name={{item}} state=latest
+    when: ansible_os_family == 'RedHat'
+    with_items:
+     - vim
+     - nano
+     - httpd
+  - name: install vsftpd on ubuntu-servers
+    apt: name={{item}} state=latest
+    when: ansible_os_family == "Debian"
+    with_items:
+     - vim
+     - nano
+     - apache2
+    # Loop with Hash (Dictionary)
+
+  - name: add server users
+    user: name={{ item.name }} state=present groups={{ item.groups }}
+    with_items:
+     - { name: 'testuser1', groups: 'root' }
+     - { name: 'testuser2', groups: 'root' }

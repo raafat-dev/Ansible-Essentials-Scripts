@@ -1,0 +1,8 @@
+- hosts: all
+  become: yes
+  tasks:
+  - name: show file content
+    debug: msg={{item}}
+    with_file:
+     - hosts
+     - test.txt
